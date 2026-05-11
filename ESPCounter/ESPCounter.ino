@@ -7,10 +7,10 @@
 #include <OneButton.h>
 
 // =====================
-// PIN-DEFINITIONEN
+// PIN DEFINITIONS
 // =====================
 #define BUTTON_PIN 2
-#define LED_PIN    3   // Status-LED
+#define LED_PIN    3   // Status LED
 
 #define DIN_PIN 4
 #define CLK_PIN 5
@@ -22,24 +22,24 @@
 #define SD_SCK  10
 
 // =====================
-// LED-CONTROLLER
+// LED CONTROLLER
 // =====================
 LedControl lc = LedControl(DIN_PIN, CLK_PIN, CS_LED, 1);
 
 // =====================
-// OneButton initialisieren
+// Initialize OneButton
 // =====================
 OneButton button(BUTTON_PIN, true); // true = Input Pullup
 
 // =====================
-// Zähler & Log
+// Counter and log
 // =====================
 int counter = 0;
-int counterAlle = 0;
+int counterAll = 0;
 File logfile;
 
 // =====================
-// Datum & Uhrzeit
+// Date and time
 // =====================
 int editDay   = 3;
 int editMonth = 2;
@@ -54,20 +54,21 @@ bool blinkState = false;
 unsigned long lastBlink = 0;
 
 // =====================
-// NTP-Zeit
+// NTP time
 // =====================
 bool initTime() {
-  configTzTime("CET-1CEST,M3.5.0/2,M10.5.0/3", "de.pool.ntp.org", "time.google.com");  Serial.print("Warte auf Netzwerkzeit");
+  configTzTime("CET-1CEST,M3.5.0/2,M10.5.0/3", "pool.ntp.org", "time.google.com");
+  Serial.print("Waiting for network time");
   unsigned long start = millis();
   while (sntp_get_sync_status() != SNTP_SYNC_STATUS_COMPLETED || WiFi.status() != WL_CONNECTED) {
     if (millis() - start > 100000) {
-      Serial.println("\n Keine Netzwerkzeit");
+      Serial.println("\n No network time");
       if (loadLastDateTimeFromCSV(editDay, editMonth, editYear, editHour, editMin)) {
-          Serial.println("Daten von SD geladen!"); // Test-Ausgabe 2
+          Serial.println("Data loaded from SD card!");
       } else {
-          Serial.println("SD-Daten konnten nicht gelesen werden (Datei leer oder fehlt).");
+          Serial.println("Could not read SD data (file empty or missing).");
       }
-      Serial.println("Oeffne Offline-Editor..."); // Test-Ausgabe 3
+      Serial.println("Opening offline editor...");
       offlineDateEditor();
       setSystemTimeFromManual(editDay,editMonth,editYear,editHour,editMin);
       return false;
@@ -78,12 +79,12 @@ bool initTime() {
     digitalWrite(LED_PIN, LOW);
     delay(250); 
   }
-  Serial.println("Zeit synchronisiert!");
+  Serial.println("Time synchronized!");
   return true;
 }
 
 void offlineDateEditor() {
-  Serial.println("Kein WLAN → Offline-Datum einstellen");
+  Serial.println("No WiFi: set date offline");
   button.reset();
   button.attachClick(editClick);
   button.attachLongPressStart(editLongPress);
@@ -247,13 +248,13 @@ void setSystemTimeFromManual(
   int hour, int minute
 ) {
   struct tm t;
-  t.tm_year = year - 1900;   // WICHTIG
-  t.tm_mon  = month - 1;     // 0–11
+  t.tm_year = year - 1900;   // IMPORTANT
+  t.tm_mon  = month - 1;     // 0 to 11
   t.tm_mday = day;
   t.tm_hour = hour;
   t.tm_min  = minute;
   t.tm_sec  = 0;
-  t.tm_isdst = -1;           // Sommerzeit automatisch
+  t.tm_isdst = -1;           // Handle daylight saving automatically
 
   time_t now = mktime(&t);
 
@@ -263,7 +264,7 @@ void setSystemTimeFromManual(
 
   settimeofday(&tv, NULL);
 
-  Serial.println("Systemzeit manuell gesetzt");
+  Serial.println("System time set manually");
 }
 
 String getTimestamp() {
@@ -284,7 +285,7 @@ String getTimestamp() {
 }
 
 // =====================
-// Display-Funktion
+// Display function
 // =====================
 void showNumber(int number) {
   lc.clearDisplay(0);
@@ -302,7 +303,7 @@ void showNumber(int number) {
 }
 
 // =====================
-// CSV-Funktionen
+// CSV functions
 // =====================
 int loadCounterFromCSV() {
   if (!SD.exists("/log.csv")) return 0;
@@ -314,7 +315,7 @@ int loadCounterFromCSV() {
   while (f.available()) lastLine = f.readStringUntil('\n');
   f.close();
 
-  if (lastLine.startsWith("Datum")) return 0;
+  if (lastLine.startsWith("Date")) return 0;
 
   int lastSemicolon = lastLine.lastIndexOf(';');
   if (lastSemicolon < 0) return 0;
@@ -335,7 +336,7 @@ void getTodayString(char* buffer) {
           t->tm_year + 1900);
 }
 
-int countVisitorsToday() {
+int countEventsToday() {
   if (!SD.exists("/log.csv")) return 0;
 
   File f = SD.open("/log.csv");
@@ -371,9 +372,9 @@ bool removeLastCSVEntry() {
   }
   f.close();
 
-  if (lines.size() <= 1) return false; // nur Header vorhanden
+  if (lines.size() <= 1) return false; // only header present
 
-  lines.pop_back(); // letzte Zeile entfernen
+  lines.pop_back(); // remove last line
 
   File w = SD.open("/log.csv", FILE_WRITE);
   if (!w) return false;
@@ -391,34 +392,34 @@ bool loadLastDateTimeFromCSV(int &day, int &month, int &year, int &hour, int &mi
 
   String lastValidLine = "";
   
-  // Wir lesen die Datei, merken uns aber immer nur die aktuelle Zeile,
-  // wenn sie nicht leer ist. So landet die letzte gefüllte Zeile in lastValidLine.
+  // We read the file but only keep the current line if it is not empty.
+  // This way the last non-empty line ends up in lastValidLine.
   while (f.available()) {
     String line = f.readStringUntil('\n');
-    line.trim(); // Entfernt \r und Leerzeichen
+    line.trim(); // Removes \r and whitespace
     if (line.length() > 10) { 
       lastValidLine = line;
     }
   }
   f.close();
 
-  // Debug: Was wurde wirklich gefunden?
-  Serial.print("Gefundene Zeile: "); Serial.println(lastValidLine);
+  // Debug: what was actually found?
+  Serial.print("Line found: "); Serial.println(lastValidLine);
 
   if (lastValidLine.length() < 10) return false;
 
-  // Zerlegen: 14.01.2026;17:47;120
+  // Split: 14.01.2026;17:47;120
   int p1 = lastValidLine.indexOf(';');
   int p2 = lastValidLine.indexOf(';', p1 + 1);
 
   if (p1 == -1 || p2 == -1) return false;
 
-  // Datum parsen
+  // Parse date
   day   = lastValidLine.substring(0, 2).toInt();
   month = lastValidLine.substring(3, 5).toInt();
   year  = lastValidLine.substring(6, p1).toInt();
 
-  // Zeit parsen
+  // Parse time
   String timePart = lastValidLine.substring(p1 + 1, p2);
   int colon = timePart.indexOf(':');
   if (colon != -1) {
@@ -431,11 +432,11 @@ bool loadLastDateTimeFromCSV(int &day, int &month, int &year, int &hour, int &mi
 }
 
 // =====================
-// Button Events
+// Button events
 // =====================
 void onClick() {
   counter++;
-  showNumber(countVisitorsToday());
+  showNumber(countEventsToday());
 
   String ts = getTimestamp();
   String line = ts + ";" + String(counter);
@@ -452,14 +453,14 @@ void onClick() {
 void onLongPress() {
   if (counter > 0) {
     counter--;
-    showNumber(countVisitorsToday());
+    showNumber(countEventsToday());
   }
 
   bool ok = removeLastCSVEntry();
-  if (ok) Serial.println("Letzter Eintrag entfernt");
-  else Serial.println("Kein Eintrag zum Entfernen");
+  if (ok) Serial.println("Last entry removed");
+  else Serial.println("No entry to remove");
 
-  // LED blinkt als Feedback
+  // LED blinks as feedback
   for (int i = 0; i < 3; i++) {
     digitalWrite(LED_PIN, HIGH);
     delay(120);
@@ -482,7 +483,7 @@ void setup() {
   bool portalRequested = (digitalRead(BUTTON_PIN) == LOW);
 
   WiFi.mode(WIFI_STA);
-  Serial.print("Aktuelle MAC: ");
+  Serial.print("Current MAC: ");
   Serial.println(WiFi.macAddress());
   WiFi.setTxPower(WIFI_POWER_8_5dBm);
   WiFi.setAutoReconnect(true);
@@ -492,29 +493,29 @@ void setup() {
   WiFiManager wm;
   wm.setConfigPortalTimeout(180);
   wm.setBreakAfterConfig(true);
-  // Zeigt die Eingabefelder für statische IP, Gateway und DNS im Portal an
+  // Shows the input fields for static IP, gateway and DNS in the portal
   wm.setShowStaticFields(true); 
-  // Optional: Standardwerte vorausfüllen
+  // Optional: prefill default values
 
   if (portalRequested) {
-    Serial.println("Button gedrückt → WiFiManager Portal");
+    Serial.println("Button pressed: starting WiFiManager portal");
     digitalWrite(LED_PIN, HIGH);
 
-    if (!wm.startConfigPortal("Besucherzaehler-Setup")) {
-      Serial.println("Portal Timeout → Reboot");
+    if (!wm.startConfigPortal("EventCounter-Setup")) {
+      Serial.println("Portal timeout: reboot");
       ESP.restart();
     }
   } else {
-    Serial.println("Normaler WLAN-Start");
+    Serial.println("Normal WiFi start");
   }
 
-  Serial.print("Warte auf Netzwerkzeit");
+  Serial.print("Waiting for network time");
   wm.autoConnect();
   unsigned long start = millis();
-  if (!wm.autoConnect("Besucherzaehler-Setup")) {
-    Serial.println("WLAN fehlgeschlagen");
+  if (!wm.autoConnect("EventCounter-Setup")) {
+    Serial.println("WiFi failed");
   } else {
-    Serial.println("WLAN verbunden");
+    Serial.println("WiFi connected");
     Serial.print("RSSI: ");
     Serial.println(WiFi.RSSI());
   }
@@ -522,17 +523,17 @@ void setup() {
   digitalWrite(LED_PIN, LOW);
 
   SPI.begin(SD_SCK, SD_MISO, SD_MOSI, SD_CS);
-  if (!SD.begin(SD_CS, SPI)) Serial.println("SD-Karte Fehler!");
+  if (!SD.begin(SD_CS, SPI)) Serial.println("SD card error!");
   else {
-    Serial.println("SD-Karte OK!");
+    Serial.println("SD card OK!");
     if (!SD.exists("/log.csv")) {
       logfile = SD.open("/log.csv", FILE_WRITE);
-      logfile.println("Datum;Uhrzeit;Zaehler");
+      logfile.println("Date;Time;Counter");
       logfile.close();
       counter = 0;
     } else {
       counter = loadCounterFromCSV();
-      Serial.printf("Letzter Zählerwert: %d\n", counter);
+      Serial.printf("Last counter value: %d\n", counter);
     }
   }
 
@@ -543,21 +544,21 @@ void setup() {
 
   initTime();
   lc.clearDisplay(0);
-  showNumber(countVisitorsToday()-1);
+  showNumber(countEventsToday()-1);
   delay(2000);
 
-  // OneButton Events verbinden
+  // Attach OneButton events
   button.attachClick(onClick);
   button.attachLongPressStart(onLongPress);
 
-  Serial.println("System bereit");
+  Serial.println("System ready");
 }
 
 // =====================
 // Loop
 // =====================
 void loop() {
-  button.tick(); // muss sehr oft aufgerufen werden
+  button.tick(); // must be called very frequently
   if(HIGH == digitalRead(BUTTON_PIN)){
     digitalWrite(LED_PIN, LOW);
   } else {
