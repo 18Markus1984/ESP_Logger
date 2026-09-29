@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="960" height="360" rx="18" fill="#1F2626"/>
+<text x="40" y="52" font-size="22" font-weight="600" fill="#E6EAE8">From button press to chart</text>
+<rect x="40" y="84" width="300" height="236" rx="12" fill="#273030" stroke="#4A5856" stroke-width="2"/>
+<text x="60" y="114" font-size="14" font-weight="600" fill="#E6EAE8">log.csv on the microSD card</text>
+<text x="60" y="146" font-family="DejaVu Sans Mono, Consolas, monospace" font-size="13" fill="#93A09C">Date;Time;Counter</text>
+<text x="60" y="168" font-family="DejaVu Sans Mono, Consolas, monospace" font-size="13" fill="#E6EAE8">08.05.2026;9:39;1</text>
+<text x="60" y="190" font-family="DejaVu Sans Mono, Consolas, monospace" font-size="13" fill="#E6EAE8">08.05.2026;9:42;2</text>
+<text x="60" y="212" font-family="DejaVu Sans Mono, Consolas, monospace" font-size="13" fill="#E6EAE8">08.05.2026;9:43;3</text>
+<text x="60" y="234" font-family="DejaVu Sans Mono, Consolas, monospace" font-size="13" fill="#E6EAE8">08.05.2026;9:45;4</text>
+<text x="60" y="256" font-family="DejaVu Sans Mono, Consolas, monospace" font-size="13" fill="#E6EAE8">08.05.2026;9:51;5</text>
+<text x="60" y="278" font-family="DejaVu Sans Mono, Consolas, monospace" font-size="13" fill="#E6EAE8">08.05.2026;9:52;6</text>
+<text x="60" y="300" font-family="DejaVu Sans Mono, Consolas, monospace" font-size="13" fill="#E6EAE8">…</text>
+<path d="M356 202 H410" stroke="#D08A4E" stroke-width="3"/><path d="M406 194 L420 202 L406 210 Z" fill="#D08A4E"/>
+<text x="388" y="186" font-size="11" text-anchor="middle" fill="#93A09C">paste into</text><text x="388" y="228" font-size="11" text-anchor="middle" fill="#93A09C">RawData</text>
+<rect x="436" y="84" width="484" height="236" rx="12" fill="#273030" stroke="#4A5856" stroke-width="2"/>
+<text x="456" y="114" font-size="14" font-weight="600" fill="#E6EAE8">Time-of-Day Distribution</text>
+<text x="900" y="114" font-size="12" text-anchor="end" fill="#93A09C">26 events, 08.05.2026</text>
+<rect x="469.0" y="280.0" width="15.2" height="1.5" rx="3" fill="#3A4644"/>
+<text x="476.6" y="298" font-size="11" text-anchor="middle" fill="#93A09C">08:00</text>
+<rect x="490.2" y="280.0" width="15.2" height="1.5" rx="3" fill="#3A4644"/>
+<rect x="511.4" y="280.0" width="15.2" height="1.5" rx="3" fill="#3A4644"/>
+<text x="519.0" y="298" font-size="11" text-anchor="middle" fill="#93A09C">09:00</text>
+<rect x="532.6" y="140.0" width="15.2" height="140.0" rx="3" fill="#D08A4E"/>
+<text x="540.2" y="134.0" font-size="11" text-anchor="middle" fill="#E6EAE8">6</text>
+<rect x="553.8" y="210.0" width="15.2" height="70.0" rx="3" fill="#D08A4E"/>
+<text x="561.4" y="204.0" font-size="11" text-anchor="middle" fill="#E6EAE8">3</text>
+<text x="561.4" y="298" font-size="11" text-anchor="middle" fill="#93A09C">10:00</text>
+<rect x="575.0" y="256.7" width="15.2" height="23.3" rx="3" fill="#D08A4E"/>
+<text x="582.6" y="250.7" font-size="11" text-anchor="middle" fill="#E6EAE8">1</text>
+<rect x="596.2" y="233.3" width="15.2" height="46.7" rx="3" fill="#D08A4E"/>
+<text x="603.8" y="227.3" font-size="11" text-anchor="middle" fill="#E6EAE8">2</text>
+<text x="603.8" y="298" font-size="11" text-anchor="middle" fill="#93A09C">11:00</text>
+<rect x="617.4" y="233.3" width="15.2" height="46.7" rx="3" fill="#D08A4E"/>
+<text x="625.0" y="227.3" font-size="11" text-anchor="middle" fill="#E6EAE8">2</text>
+<rect x="638.6" y="280.0" width="15.2" height="1.5" rx="3" fill="#3A4644"/>
+<text x="646.2" y="298" font-size="11" text-anchor="middle" fill="#93A09C">12:00</text>
+<rect x="659.8" y="210.0" width="15.2" height="70.0" rx="3" fill="#D08A4E"/>
+<text x="667.4" y="204.0" font-size="11" text-anchor="middle" fill="#E6EAE8">3</text>
+<rect x="681.0" y="256.7" width="15.2" height="23.3" rx="3" fill="#D08A4E"/>
+<text x="688.6" y="250.7" font-size="11" text-anchor="middle" fill="#E6EAE8">1</text>
+<text x="688.6" y="298" font-size="11" text-anchor="middle" fill="#93A09C">13:00</text>
+<rect x="702.2" y="280.0" width="15.2" height="1.5" rx="3" fill="#3A4644"/>
+<rect x="723.4" y="280.0" width="15.2" height="1.5" rx="3" fill="#3A4644"/>
+<text x="731.0" y="298" font-size="11" text-anchor="middle" fill="#93A09C">14:00</text>
+<rect x="744.6" y="280.0" width="15.2" height="1.5" rx="3" fill="#3A4644"/>
+<rect x="765.8" y="280.0" width="15.2" height="1.5" rx="3" fill="#3A4644"/>
+<text x="773.4" y="298" font-size="11" text-anchor="middle" fill="#93A09C">15:00</text>
+<rect x="787.0" y="163.3" width="15.2" height="116.7" rx="3" fill="#D08A4E"/>
+<text x="794.6" y="157.3" font-size="11" text-anchor="middle" fill="#E6EAE8">5</text>
+<rect x="808.2" y="256.7" width="15.2" height="23.3" rx="3" fill="#D08A4E"/>
+<text x="815.8" y="250.7" font-size="11" text-anchor="middle" fill="#E6EAE8">1</text>
+<text x="815.8" y="298" font-size="11" text-anchor="middle" fill="#93A09C">16:00</text>
+<rect x="829.4" y="233.3" width="15.2" height="46.7" rx="3" fill="#D08A4E"/>
+<text x="837.0" y="227.3" font-size="11" text-anchor="middle" fill="#E6EAE8">2</text>
+<rect x="850.6" y="280.0" width="15.2" height="1.5" rx="3" fill="#3A4644"/>
+<text x="858.2" y="298" font-size="11" text-anchor="middle" fill="#93A09C">17:00</text>
+<rect x="871.8" y="280.0" width="15.2" height="1.5" rx="3" fill="#3A4644"/>
+<line x1="466" y1="280" x2="890" y2="280" stroke="#4A5856"/>
+</svg>

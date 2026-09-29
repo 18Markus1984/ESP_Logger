@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="960" height="470" rx="18" fill="#1F2626"/>
+<text x="40" y="52" font-size="22" font-weight="600" fill="#E6EAE8">One button, three jobs</text>
+<g font-size="12" fill="#93A09C"><circle cx="612" cy="47" r="7" fill="#D08A4E"/><text x="626" y="52">click</text><circle cx="686" cy="47" r="7" fill="#D08A4E"/><circle cx="706" cy="47" r="7" fill="#D08A4E"/><text x="720" y="52">double click</text><rect x="813" y="40" width="46" height="14" rx="7" fill="#D08A4E"/><text x="866" y="52">long press</text></g>
+<rect x="40" y="80" width="280" height="360" rx="12" fill="#273030" stroke="#4A5856" stroke-width="2"/>
+<text x="60" y="114" font-size="16" font-weight="600" fill="#E6EAE8">Switching on</text>
+<rect x="60" y="143" width="46" height="14" rx="7" fill="#D08A4E"/>
+<text x="124" y="155" font-size="14" font-weight="600" fill="#E6EAE8">Hold + switch on</text>
+<text x="60" y="180" font-size="12.5" fill="#B4BFBB">Opens the Wi-Fi portal “EventCounter-</text>
+<text x="60" y="198" font-size="12.5" fill="#B4BFBB">Setup”. The LED stays on, the portal</text>
+<text x="60" y="216" font-size="12.5" fill="#B4BFBB">closes after 3 minutes.</text>
+<circle cx="67" cy="252" r="7" fill="none" stroke="#93A09C" stroke-width="2"/>
+<text x="124" y="257" font-size="14" font-weight="600" fill="#E6EAE8">Just switch on</text>
+<text x="60" y="282" font-size="12.5" fill="#B4BFBB">Shows the all-time total, connects to</text>
+<text x="60" y="300" font-size="12.5" fill="#B4BFBB">the saved Wi-Fi and syncs the clock.</text>
+<text x="60" y="318" font-size="12.5" fill="#B4BFBB">The LED blinks while it waits.</text>
+<rect x="340" y="80" width="280" height="360" rx="12" fill="#273030" stroke="#4A5856" stroke-width="2"/>
+<text x="360" y="114" font-size="16" font-weight="600" fill="#E6EAE8">Counting</text>
+<circle cx="367" cy="150" r="7" fill="#D08A4E"/>
+<text x="424" y="155" font-size="14" font-weight="600" fill="#E6EAE8">Click</text>
+<text x="360" y="180" font-size="12.5" fill="#B4BFBB">Count one event and write a line to</text>
+<text x="360" y="198" font-size="12.5" fill="#B4BFBB">log.csv. The display shows today’s</text>
+<text x="360" y="216" font-size="12.5" fill="#B4BFBB">count.</text>
+<rect x="360" y="245" width="46" height="14" rx="7" fill="#D08A4E"/>
+<text x="424" y="257" font-size="14" font-weight="600" fill="#E6EAE8">Long press</text>
+<text x="360" y="282" font-size="12.5" fill="#B4BFBB">Undo: remove the last line from</text>
+<text x="360" y="300" font-size="12.5" fill="#B4BFBB">log.csv. The LED blinks three times.</text>
+<rect x="640" y="80" width="280" height="360" rx="12" fill="#273030" stroke="#4A5856" stroke-width="2"/>
+<text x="660" y="114" font-size="16" font-weight="600" fill="#E6EAE8">Offline clock editor</text>
+<circle cx="667" cy="150" r="7" fill="#D08A4E"/>
+<text x="724" y="155" font-size="14" font-weight="600" fill="#E6EAE8">Click</text>
+<text x="660" y="180" font-size="12.5" fill="#B4BFBB">Current field +1. The field being</text>
+<text x="660" y="198" font-size="12.5" fill="#B4BFBB">edited blinks on the display.</text>
+<circle cx="667" cy="234" r="7" fill="#D08A4E"/><circle cx="687" cy="234" r="7" fill="#D08A4E"/>
+<text x="724" y="239" font-size="14" font-weight="600" fill="#E6EAE8">Double click</text>
+<text x="660" y="264" font-size="12.5" fill="#B4BFBB">Bigger step: day +4, month +2, hour</text>
+<text x="660" y="282" font-size="12.5" fill="#B4BFBB">+2, minute +5.</text>
+<rect x="660" y="311" width="46" height="14" rx="7" fill="#D08A4E"/>
+<text x="724" y="323" font-size="14" font-weight="600" fill="#E6EAE8">Long press</text>
+<text x="660" y="348" font-size="12.5" fill="#B4BFBB">Next field: day, month, year, hour,</text>
+<text x="660" y="366" font-size="12.5" fill="#B4BFBB">minute, then start counting.</text>
+<circle cx="67" cy="350" r="7" fill="none" stroke="#93A09C" stroke-width="2" stroke-dasharray="3 3"/>
+<text x="124" y="355" font-size="14" font-weight="600" fill="#E6EAE8">No Wi-Fi?</text>
+<text x="60" y="380" font-size="12.5" fill="#B4BFBB">After 100 s without network time the</text>
+<text x="60" y="398" font-size="12.5" fill="#B4BFBB">offline clock editor opens, prefilled</text>
+<text x="60" y="416" font-size="12.5" fill="#B4BFBB">with the last time in log.csv.</text>
+</svg>
