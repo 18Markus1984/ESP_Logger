@@ -5,8 +5,6 @@ setlocal
 cd /d "%~dp0images" || (mkdir "%~dp0images" && cd /d "%~dp0images")
 
 echo Renders
-echo   hero.png
-curl -sSfL -A "Mozilla/5.0" -o "hero.png" "https://media.printables.com/media/prints/81381c71-2b87-45eb-af55-97f0769b2278/images/12871540_713ebd79-058b-477e-a4cf-34647079cad8_6439b551-45c2-4ac2-ba36-ea304913e2dc/thumbs/cover/1200x630/png/printablesmakerworld-3d-tetris11.png" || echo     FAILED: hero.png
 echo   gallery-1.png
 curl -sSfL -A "Mozilla/5.0" -o "gallery-1.png" "https://media.printables.com/media/prints/b866ebc0-2e49-4fe2-b466-d91df7221e72/images/12871541_6c94e5e2-3a3c-42fe-b765-6de7379fb41f_385bf363-2fd9-494e-821f-80141de0ff88/thumbs/cover/800x800/png/printablesmakerworld-3d-tetris12.png" || echo     FAILED: gallery-1.png
 echo   gallery-2.png
